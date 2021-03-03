@@ -1,0 +1,10 @@
+C:\Users\Jessie Guerrero\Desktop\Lilith\obj\Debug\Lilith.csprojAssemblyReference.cache
+C:\Users\Jessie Guerrero\Desktop\Lilith\obj\Debug\Lilith.Form1.resources
+C:\Users\Jessie Guerrero\Desktop\Lilith\obj\Debug\Lilith.Properties.Resources.resources
+C:\Users\Jessie Guerrero\Desktop\Lilith\obj\Debug\Lilith.csproj.GenerateResource.cache
+C:\Users\Jessie Guerrero\Desktop\Lilith\obj\Debug\Lilith.csproj.CoreCompileInputs.cache
+C:\Users\Jessie Guerrero\Desktop\Lilith\bin\Debug\Lilith.exe.config
+C:\Users\Jessie Guerrero\Desktop\Lilith\bin\Debug\Lilith.exe
+C:\Users\Jessie Guerrero\Desktop\Lilith\bin\Debug\Lilith.pdb
+C:\Users\Jessie Guerrero\Desktop\Lilith\obj\Debug\Lilith.exe
+C:\Users\Jessie Guerrero\Desktop\Lilith\obj\Debug\Lilith.pdb
