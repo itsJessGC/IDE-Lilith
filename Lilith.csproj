@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="analizadorLexico.cs" />
     <Compile Include="editorPrin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +55,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="token.cs" />
     <EmbeddedResource Include="editorPrin.resx">
       <DependentUpon>editorPrin.cs</DependentUpon>
     </EmbeddedResource>

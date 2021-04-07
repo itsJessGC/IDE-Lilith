@@ -8,11 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Lilith
 {
     public partial class editorPrin : Form
     {
+        //Pabaras reservadas
+        Regex reservadas = new Regex(@"int|if|else|return|using|namespace|#.*");
+        Regex otro_rx = new Regex(@"<.*>|\"".*\""");
+
         public editorPrin()
         {
             InitializeComponent();
@@ -23,12 +28,44 @@ namespace Lilith
             RichTextBox rtb = null;
             TabPage tp = editorCodigo.SelectedTab;
 
-            if(tp != null)
+            if (tp != null)
             {
                 rtb = tp.Controls[0] as RichTextBox;
             }
             return rtb;
         }
+
+        /*private void Cambio_Texto(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Space
+                || e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
+            {
+                MarcarTexto();
+            }
+        }
+
+        private void MarcarTexto()
+        {
+            int posActual = cuadro.SelectionStart;
+            cuadro.SelectAll();
+            cuadro.SelectionColor = Color.Black;
+            MatchCollection matchesReservadas = reservadas.Matches(cuadro.Text);
+            MatchCollection matchesOtro = otro_rx.Matches(cuadro.Text);
+
+            foreach (Match temp in matchesReservadas)
+            {
+                cuadro.Select(temp.Index, temp.Length);
+                cuadro.SelectionColor = Color.Blue;
+            }
+            foreach (Match temp in matchesOtro)
+            {
+                cuadro.Select(temp.Index, temp.Length);
+                cuadro.SelectionColor = Color.Red;
+            }
+
+            cuadro.SelectionStart = posActual;
+            cuadro.SelectionLength = 0;
+        }*/
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
@@ -37,7 +74,7 @@ namespace Lilith
 
         private void tabPage1_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void tabPage3_Click(object sender, EventArgs e)
@@ -106,8 +143,15 @@ namespace Lilith
 
         private void tabPage1_Click_1(object sender, EventArgs e)
         {
-            
+
         }
+
+        /*private void rtb_TextChanged(object sender, EventArgs e)
+        {
+            this.CambiaColores("while", Color.Purple, 0);
+            this.CambiaColores("if", Color.Green, 0);
+        }*/
+
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
@@ -198,297 +242,44 @@ namespace Lilith
 
         private void tabPage1_Click_2(object sender, EventArgs e)
         {
-            String linea;
 
-            StreamReader fp = new StreamReader(editorCodigo.SelectedTab.Text); //Leemos el archovo abierto
-                                                                                                                                                                                         //un string para manipularlo mucho mas facil 
-            linea = makeString(fp);
-            
-            encontrarTokens(linea, linea.Length);
-            
         }
 
-        public struct token
+        private void editorCodigo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            public token_types type;
-            public string lexema;
+
         }
 
-        public const int MAXLENID = 32;
-        public const int MAXLENBUF = 1024;
-        public const int MAXRESWORDS = 4;
-
-        public enum token_types
+        private void menuPrincipal_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            TKN_BEGIN, TKN_END, TKN_READ, TKN_WRITE, TKN_ID,
-            TKN_NUM, TKN_LPAREN, TKN_RPAREN, TKN_SEMICOLON, TKN_COMMA,
-            TKN_ASSIGN, TKN_ADD, TKN_MINUS, TKN_EOF, TKN_ERROR
+
         }
 
-        enum States
+        private void buildToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            IN_START, IN_ID, IN_NUM, IN_LPAREN, IN_RPAREN, IN_SEMICOLON,
-            IN_COMMA, IN_ASSIGN, IN_ADD, IN_MINUS, IN_EOF, IN_ERROR, IN_DONE
-        }
-
-        //esta funcion lo que va ser es que elimine los comentarios y dejar todo en un string
-        //falta que elimine los comentarios 
-        static String makeString(StreamReader fp)
-        {
-            String line = null;
-            String recipiente = null;
-            try
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                //Read the first line of text
-                line = fp.ReadLine();
-                //Continue to read until you reach end of file
-                while (line != null)
+                using (Stream s = File.Open(saveFileDialog1.FileName, FileMode.CreateNew))
+                using (StreamWriter sw = new StreamWriter(s))
                 {
-                    //junta el texto en un string 
-                    recipiente += line;
-                    //Read the next line
-                    line = fp.ReadLine();
-                }
-                //close the file
-
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception: " + e.Message);
-            }
-            finally
-            {
-                Console.WriteLine("Terminó");
-            }
-
-            return recipiente;
-        }
-
-        //esta funcion checa las palabras que le son enviadas para identificar 
-        //si estas son palabras reservadas 
-        //aqui la meta es que cheque los identificadores , los numeros , digitos y caracteres 
-
-        private void queTokenes(String palabra)
-        {
-            if (palabra.Equals("program") ||
-                palabra.Equals("if") ||
-                palabra.Equals("else") ||
-                palabra.Equals("fi") ||
-                palabra.Equals("do") ||
-                palabra.Equals("until") ||
-                palabra.Equals("while") ||
-                palabra.Equals("read") ||
-                palabra.Equals("case") ||
-                palabra.Equals("write") ||
-                palabra.Equals("float") ||
-                palabra.Equals("int") ||
-                palabra.Equals("bool") ||
-                palabra.Equals("not") ||
-                palabra.Equals("and") ||
-                palabra.Equals("or")
-                )
-            {
-                Console.WriteLine(palabra + "   = Reservada");
-                Tokens.Text = palabra + " = Reservada";
-            }
-        }
-
-        //esta funcion checa y va haciendo palabras asta que encuentre un digito especial 
-        //en caso de que asi sea checa la palabra y la manda a la funcion de arriba 
-        //y ademas que identifica los signos especiales 
-        public void encontrarTokens(String linea, int largo)
-        {
-            token tok;
-
-            tok.lexema = null;
-            int pos = 0;
-            char caracter;
-            int index = 0;
-            while (index < largo)
-            {
-                caracter = linea[index];
-                switch (caracter)
-                {
-                    case ' ':
-                        queTokenes(tok.lexema);
-                        tok.lexema = "";
-                        index++;
-                        break;
-                    case '(':
-
-                        queTokenes(tok.lexema);
-                        tok.lexema = "";
-                        Console.WriteLine("(   = simbolo");
-                        Tokens.Text = "(   = simbolo";
-                        index++;
-                        break;
-                    case ')':
-                        queTokenes(tok.lexema);
-                        tok.lexema = "";
-                        Console.WriteLine(")   = simbolo");
-                        Tokens.Text = ")   = simbolo";
-                        index++;
-                        break;
-                    case ';':
-                        queTokenes(tok.lexema);
-                        tok.lexema = "";
-                        Console.WriteLine(";   = simbolo");
-                        Tokens.Text = ";   = simbolo";
-                        index++;
-                        break;
-                    case ',':
-                        queTokenes(tok.lexema);
-                        tok.lexema = "";
-                        Console.WriteLine(",   = simbolo");
-                        Tokens.Text = ",   = simbolo";
-                        index++;
-                        break;
-                    case ':':
-                        queTokenes(tok.lexema);
-                        tok.lexema = "";
-                        Console.WriteLine(":   = simbolo");
-                        Tokens.Text = ":   = simbolo";
-                        index++;
-                        break;
-                    case '+':
-                        queTokenes(tok.lexema);
-                        if (linea[index + 1].Equals('='))
-                        {
-                            Console.WriteLine("+=   = simbolo");
-                            Tokens.Text = "+=   = simbolo";
-                            index++;
-                        }
-                        else
-                        {
-                            Console.WriteLine("+   = simbolo");
-                            Tokens.Text = "+   = simbolo";
-                        }
-                        tok.lexema = "";
-                        index++;
-                        break;
-                    case '-':
-                        queTokenes(tok.lexema);
-                        tok.lexema = "";
-                        if (linea[index + 1].Equals('='))
-                        {
-                            Console.WriteLine("-=   = simbolo");
-                            Tokens.Text = "-=   = simbolo";
-                            index++;
-                        }
-                        else
-                        {
-                            Console.WriteLine("-   = simbolo");
-                            Tokens.Text = "-   = simbolo";
-                        }
-                        index++;
-                        break;
-                    case '*':
-                        queTokenes(tok.lexema);
-                        tok.lexema = "";
-                        Console.WriteLine("*   = simbolo");
-                        Tokens.Text = "*   = simbolo";
-                        index++;
-                        break;
-                    case '/':
-                        queTokenes(tok.lexema);
-                        tok.lexema = "";
-                        Console.WriteLine("/   = simbolo");
-                        Tokens.Text = "/   = simbolo";
-                        index++;
-                        break;
-                    case '^':
-                        queTokenes(tok.lexema);
-                        tok.lexema = "";
-                        Console.WriteLine("^   = simbolo");
-                        Tokens.Text = "^   = simbolo";
-                        index++;
-                        break;
-                    case '<':
-                        queTokenes(tok.lexema);
-                        tok.lexema = "";
-                        if (linea[index + 1].Equals('='))
-                        {
-                            Console.WriteLine("<=   = simbolo");
-                            Tokens.Text = "<=   = simbolo";
-                            index++;
-                        }
-                        else
-                        {
-                            Console.WriteLine("<   = simbolo");
-                            Tokens.Text = "<   = simbolo";
-                        }
-                        index++;
-                        break;
-                    case '>':
-                        queTokenes(tok.lexema);
-                        tok.lexema = "";
-                        if (linea[index + 1].Equals('='))
-                        {
-                            Console.WriteLine(">=   = simbolo");
-                            Tokens.Text = ">=   = simbolo";
-                            index++;
-                        }
-                        else
-                        {
-                            Console.WriteLine(">   = simbolo");
-                            Tokens.Text = ">   = simbolo";
-                        }
-                        index++;
-                        break;
-                    case '=':
-                        queTokenes(tok.lexema);
-                        tok.lexema = "";
-                        if (linea[index + 1].Equals('='))
-                        {
-                            Console.WriteLine("==   = simbolo");
-                            Tokens.Text = "==   = simbolo";
-                            index++;
-                        }
-                        else
-                        {
-                            Console.WriteLine("=   = simbolo");
-                            Tokens.Text = "=   = simbolo";
-                        }
-                        index++;
-                        break;
-                    case '!':
-                        queTokenes(tok.lexema);
-                        tok.lexema = "";
-                        if (linea[index + 1].Equals('='))
-                        {
-                            Console.WriteLine("!=   = simbolo");
-                            Tokens.Text = "!=   = simbolo";
-                            index++;
-                        }
-                        else
-                        {
-                            Console.WriteLine("!   = simbolo");
-                            Tokens.Text = "!   = simbolo";
-                        }
-                        index++;
-                        break;
-                    case '{':
-                        queTokenes(tok.lexema);
-                        tok.lexema = "";
-                        Console.WriteLine("{    = simbolo");
-                        Tokens.Text = "{   = simbolo";
-                        index++;
-                        break;
-                    case '}':
-                        queTokenes(tok.lexema);
-                        tok.lexema = "";
-                        Console.WriteLine("}    = simbolo");
-                        Tokens.Text = "}   = simbolo";
-                        index++;
-                        break;
-                    default:
-                        tok.lexema += caracter;
-                        index++;
-                        break;
+                    sw.Write(GetRichTextBox().Text);
+                    editorCodigo.SelectedTab.Text = Path.GetFileName(saveFileDialog1.FileName);
                 }
             }
+            string[] lineas = System.IO.File.ReadAllLines(saveFileDialog1.FileName);
+            //string cadenas ="+-{;}";
+            //Console.WriteLine("Coincidencias primer archivo: \t");
+            analizadorLexico analizador = new analizadorLexico();
+            int lineaP = 1;
+            foreach (string linea in lineas)
+            {
 
+                analizador.Analizado_Lexico(linea, lineaP);
+                lineaP++;
+            }
+            analizador.obtenerTokens2();
+            tokenText.Text = analizador.tokensResultados();
         }
     }
 }
