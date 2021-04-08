@@ -14,10 +14,6 @@ namespace Lilith
 {
     public partial class editorPrin : Form
     {
-        //Pabaras reservadas
-        Regex reservadas = new Regex(@"int|if|else|return|using|namespace|#.*");
-        Regex otro_rx = new Regex(@"<.*>|\"".*\""");
-
         public editorPrin()
         {
             InitializeComponent();
@@ -34,38 +30,6 @@ namespace Lilith
             }
             return rtb;
         }
-
-        /*private void Cambio_Texto(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Space
-                || e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
-            {
-                MarcarTexto();
-            }
-        }
-
-        private void MarcarTexto()
-        {
-            int posActual = cuadro.SelectionStart;
-            cuadro.SelectAll();
-            cuadro.SelectionColor = Color.Black;
-            MatchCollection matchesReservadas = reservadas.Matches(cuadro.Text);
-            MatchCollection matchesOtro = otro_rx.Matches(cuadro.Text);
-
-            foreach (Match temp in matchesReservadas)
-            {
-                cuadro.Select(temp.Index, temp.Length);
-                cuadro.SelectionColor = Color.Blue;
-            }
-            foreach (Match temp in matchesOtro)
-            {
-                cuadro.Select(temp.Index, temp.Length);
-                cuadro.SelectionColor = Color.Red;
-            }
-
-            cuadro.SelectionStart = posActual;
-            cuadro.SelectionLength = 0;
-        }*/
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
@@ -280,6 +244,29 @@ namespace Lilith
             }
             analizador.obtenerTokens2();
             tokenText.Text = analizador.tokensResultados();
+        }
+
+        private void codigoTexto_TextChanged(object sender, EventArgs e)
+        {
+            this.CheckKeyword("while", Color.Purple, 0);
+            this.CheckKeyword("if", Color.Green, 0);
+        }
+
+        private void CheckKeyword(string word, Color color, int startIndex)
+        {
+            if (this.codigoTexto.Text.Contains(word))
+            {
+                int index = -1;
+                int selectStart = this.codigoTexto.SelectionStart;
+
+                while ((index = this.codigoTexto.Text.IndexOf(word, (index + 1))) != -1)
+                {
+                    this.codigoTexto.Select((index + startIndex), word.Length);
+                    this.codigoTexto.SelectionColor = color;
+                    this.codigoTexto.Select(selectStart, 0);
+                    this.codigoTexto.SelectionColor = Color.Black;
+                }
+            }
         }
     }
 }

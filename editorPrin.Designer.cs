@@ -29,6 +29,7 @@ namespace Lilith
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(editorPrin));
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.arbolProyecto = new System.Windows.Forms.TreeView();
@@ -55,18 +56,22 @@ namespace Lilith
             this.findInFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.terminalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editorCodigo = new System.Windows.Forms.TabControl();
-            this.terminal = new System.Windows.Forms.TextBox();
-            this.tabLexico = new System.Windows.Forms.TabControl();
-            this.arbolLex = new System.Windows.Forms.TabPage();
             this.buildToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buildToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editorCodigo = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.codigoTexto = new System.Windows.Forms.RichTextBox();
+            this.terminal = new System.Windows.Forms.TextBox();
+            this.tabLexico = new System.Windows.Forms.TabControl();
             this.Tokens = new System.Windows.Forms.TabPage();
             this.tokenText = new System.Windows.Forms.RichTextBox();
+            this.arbolLex = new System.Windows.Forms.TabPage();
             this.tabControl2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.menuPrincipal.SuspendLayout();
+            this.editorCodigo.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.tabLexico.SuspendLayout();
             this.Tokens.SuspendLayout();
             this.SuspendLayout();
@@ -144,55 +149,55 @@ namespace Lilith
             // newFileToolStripMenuItem
             // 
             this.newFileToolStripMenuItem.Name = "newFileToolStripMenuItem";
-            this.newFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newFileToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.newFileToolStripMenuItem.Text = "New File";
             this.newFileToolStripMenuItem.Click += new System.EventHandler(this.newFileToolStripMenuItem_Click);
             // 
             // openFileToolStripMenuItem
             // 
             this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.openFileToolStripMenuItem.Text = "Open File";
             this.openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
             // 
             // openProyectToolStripMenuItem
             // 
             this.openProyectToolStripMenuItem.Name = "openProyectToolStripMenuItem";
-            this.openProyectToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openProyectToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.openProyectToolStripMenuItem.Text = "Open Proyect";
             this.openProyectToolStripMenuItem.Click += new System.EventHandler(this.openProyectToolStripMenuItem_Click);
             // 
             // closeFileToolStripMenuItem
             // 
             this.closeFileToolStripMenuItem.Name = "closeFileToolStripMenuItem";
-            this.closeFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.closeFileToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.closeFileToolStripMenuItem.Text = "Close File";
             this.closeFileToolStripMenuItem.Click += new System.EventHandler(this.closeFileToolStripMenuItem_Click);
             // 
             // closeProyectToolStripMenuItem
             // 
             this.closeProyectToolStripMenuItem.Name = "closeProyectToolStripMenuItem";
-            this.closeProyectToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.closeProyectToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.closeProyectToolStripMenuItem.Text = "Close Proyect";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // closeWindowToolStripMenuItem
             // 
             this.closeWindowToolStripMenuItem.Name = "closeWindowToolStripMenuItem";
-            this.closeWindowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.closeWindowToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.closeWindowToolStripMenuItem.Text = "Close Window";
             // 
             // editToolStripMenuItem
@@ -213,54 +218,54 @@ namespace Lilith
             // undoToolStripMenuItem
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.undoToolStripMenuItem.Text = "Undo";
             this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
             // redoToolStripMenuItem
             // 
             this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.redoToolStripMenuItem.Text = "Redo";
             this.redoToolStripMenuItem.Click += new System.EventHandler(this.redoToolStripMenuItem_Click);
             // 
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.cutToolStripMenuItem.Text = "Cut";
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
             // findToolStripMenuItem
             // 
             this.findToolStripMenuItem.Name = "findToolStripMenuItem";
-            this.findToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.findToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.findToolStripMenuItem.Text = "Find";
             // 
             // replaceToolStripMenuItem
             // 
             this.replaceToolStripMenuItem.Name = "replaceToolStripMenuItem";
-            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.replaceToolStripMenuItem.Text = "Replace";
             // 
             // findInFilesToolStripMenuItem
             // 
             this.findInFilesToolStripMenuItem.Name = "findInFilesToolStripMenuItem";
-            this.findInFilesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.findInFilesToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.findInFilesToolStripMenuItem.Text = "Find in Files";
             // 
             // terminalToolStripMenuItem
@@ -274,8 +279,23 @@ namespace Lilith
             // nToolStripMenuItem
             // 
             this.nToolStripMenuItem.Name = "nToolStripMenuItem";
-            this.nToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.nToolStripMenuItem.Text = "Open Terminal";
+            // 
+            // buildToolStripMenuItem
+            // 
+            this.buildToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.buildToolStripMenuItem1});
+            this.buildToolStripMenuItem.Name = "buildToolStripMenuItem";
+            this.buildToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.buildToolStripMenuItem.Text = "Build";
+            // 
+            // buildToolStripMenuItem1
+            // 
+            this.buildToolStripMenuItem1.Name = "buildToolStripMenuItem1";
+            this.buildToolStripMenuItem1.Size = new System.Drawing.Size(101, 22);
+            this.buildToolStripMenuItem1.Text = "Build";
+            this.buildToolStripMenuItem1.Click += new System.EventHandler(this.buildToolStripMenuItem1_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -285,12 +305,33 @@ namespace Lilith
             // 
             // editorCodigo
             // 
+            this.editorCodigo.Controls.Add(this.tabPage1);
             this.editorCodigo.Location = new System.Drawing.Point(176, 30);
             this.editorCodigo.Name = "editorCodigo";
             this.editorCodigo.SelectedIndex = 0;
             this.editorCodigo.Size = new System.Drawing.Size(553, 399);
             this.editorCodigo.TabIndex = 0;
             this.editorCodigo.SelectedIndexChanged += new System.EventHandler(this.editorCodigo_SelectedIndexChanged);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.codigoTexto);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(545, 373);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // codigoTexto
+            // 
+            this.codigoTexto.Location = new System.Drawing.Point(0, 1);
+            this.codigoTexto.Name = "codigoTexto";
+            this.codigoTexto.Size = new System.Drawing.Size(543, 371);
+            this.codigoTexto.TabIndex = 0;
+            this.codigoTexto.Text = "";
+            this.codigoTexto.TextChanged += new System.EventHandler(this.codigoTexto_TextChanged);
             // 
             // terminal
             // 
@@ -312,31 +353,6 @@ namespace Lilith
             this.tabLexico.Size = new System.Drawing.Size(180, 395);
             this.tabLexico.TabIndex = 4;
             // 
-            // arbolLex
-            // 
-            this.arbolLex.Location = new System.Drawing.Point(4, 22);
-            this.arbolLex.Name = "arbolLex";
-            this.arbolLex.Padding = new System.Windows.Forms.Padding(3);
-            this.arbolLex.Size = new System.Drawing.Size(172, 369);
-            this.arbolLex.TabIndex = 1;
-            this.arbolLex.Text = "Árbol";
-            this.arbolLex.UseVisualStyleBackColor = true;
-            // 
-            // buildToolStripMenuItem
-            // 
-            this.buildToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.buildToolStripMenuItem1});
-            this.buildToolStripMenuItem.Name = "buildToolStripMenuItem";
-            this.buildToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
-            this.buildToolStripMenuItem.Text = "Build";
-            // 
-            // buildToolStripMenuItem1
-            // 
-            this.buildToolStripMenuItem1.Name = "buildToolStripMenuItem1";
-            this.buildToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.buildToolStripMenuItem1.Text = "Build";
-            this.buildToolStripMenuItem1.Click += new System.EventHandler(this.buildToolStripMenuItem1_Click);
-            // 
             // Tokens
             // 
             this.Tokens.Controls.Add(this.tokenText);
@@ -357,16 +373,28 @@ namespace Lilith
             this.tokenText.TabIndex = 0;
             this.tokenText.Text = "";
             // 
+            // arbolLex
+            // 
+            this.arbolLex.Location = new System.Drawing.Point(4, 22);
+            this.arbolLex.Name = "arbolLex";
+            this.arbolLex.Padding = new System.Windows.Forms.Padding(3);
+            this.arbolLex.Size = new System.Drawing.Size(172, 369);
+            this.arbolLex.TabIndex = 1;
+            this.arbolLex.Text = "Árbol";
+            this.arbolLex.UseVisualStyleBackColor = true;
+            // 
             // editorPrin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(927, 502);
             this.Controls.Add(this.tabLexico);
             this.Controls.Add(this.terminal);
             this.Controls.Add(this.menuPrincipal);
             this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.editorCodigo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuPrincipal;
             this.Name = "editorPrin";
             this.Text = "Form1";
@@ -375,6 +403,8 @@ namespace Lilith
             this.tabPage3.ResumeLayout(false);
             this.menuPrincipal.ResumeLayout(false);
             this.menuPrincipal.PerformLayout();
+            this.editorCodigo.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.tabLexico.ResumeLayout(false);
             this.Tokens.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -418,6 +448,8 @@ namespace Lilith
         private System.Windows.Forms.ToolStripMenuItem buildToolStripMenuItem1;
         private System.Windows.Forms.TabPage Tokens;
         private System.Windows.Forms.RichTextBox tokenText;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.RichTextBox codigoTexto;
     }
 }
 

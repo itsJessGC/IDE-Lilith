@@ -59,138 +59,115 @@ namespace Lilith
                 switch (estado)
                 {
                     case 0:
-                        if (c == '+')
-                        {
+                        if (c == '+'){
                             lexema += c;
-                            tokens("Suma", lexema, i + 1, indice);
+                            tokens("TKN_ADD", lexema, i + 1, indice);
                             lexema = "";
                         }
-                        else if (c == '-')
-                        {
+                        else if (c == '-') {
                             lexema += c;
-                            tokens("Resta", lexema, i + 1, indice);
+                            tokens("TKN_MINUS", lexema, i + 1, indice);
                             lexema = "";
                         }
-                        else if (c == '*')
-                        {
+                        else if (c == '*'){
                             lexema += c;
                             tokens("Multiplicacion", lexema, i + 1, indice);
                             lexema = "";
                         }
-                        else if (c == '/')
-                        {
+                        else if (c == '/') {
                             lexema += c;
                             estado = 4;
                         }
-                        else if (c == '^')
-                        {
+                        else if (c == '^'){
                             lexema += c;
                             tokens("Potencia", lexema, i + 1, indice);
                             lexema = "";
                         }
-                        else if (c == '>')
-                        {
+                        else if (c == '>'){
                             lexema += c;
                             tokens("Mayor que", lexema, i + 1, indice);
                             estado = 6;
                         }
-                        else if (c == '<')
-                        {
+                        else if (c == '<'){
                             lexema += c;
                             estado = 8;
                         }
-                        else if (c == '=')
-                        {
+                        else if (c == '='){
                             lexema += c;
                             estado = 10;
                         }
-                        else if (c == '!')
-                        {
+                        else if (c == '!'){
                             lexema += c;
                             estado = 12;
                         }
-                        else if (c == ';')
-                        {
+                        else if (c == ';'){
                             lexema += c;
                             tokens("Punto y coma", lexema, i + 1, indice);
                             lexema = "";
                         }
-                        else if (c == ',')
-                        {
+                        else if (c == ','){
                             lexema += c;
                             tokens("Coma", lexema, i + 1, indice);
                             lexema = "";
                         }
-                        else if (c == '(')
-                        {
+                        else if (c == '('){
                             lexema += c;
                             tokens("Par abre", lexema, i + 1, indice);
                             lexema = "";
                         }
-                        else if (c == ')')
-                        {
+                        else if (c == ')'){
                             lexema += c;
                             tokens("Par cierra", lexema, i + 1, indice);
                             lexema = "";
                         }
-                        else if (c == '{')
-                        {
+                        else if (c == '{'){
                             lexema += c;
                             tokens("Llave abre", lexema, i + 1, indice);
                             lexema = "";
                         }
-                        else if (c == '}')
-                        {
+                        else if (c == '}'){
                             lexema += c;
                             tokens("Llave cierra", lexema, i + 1, indice);
                             lexema = "";
                         }
-                        else if (Char.IsLetter(c))
-                        {
+                        else if (Char.IsLetter(c)){
                             lexema += c;
                             estado = 20;
                         }
-                        else if (Char.IsDigit(c))
-                        {
+                        else if (Char.IsDigit(c)){
                             lexema += c;
                             estado = 22;
                         }
-                        else if (c == ' ')
-                        {
+                        else if (c == ' '){
                             lexema = "";
                         }
 
                         break;
                     case 4:
-                        if (c == '/')
-                        {
+                        if (c == '/'){
                             lexema += c;
                             estado = 28;
                         }
-                        else if (c == '*')
-                        {
+                        else if (c == '*'){
                             lexema += c;
                             bandera = true;
                             estado = 25;
                         }
-                        else
-                        {
+                        else{
                             tokens("Division", lexema, i + 1, indice);
                             lexema = "";
                             estado = 0;
                         }
                         break;
                     case 6:
-                        if (c == '=')
-                        {
+                        if (c == '='){
                             lexema += c;
                             listaTokens.RemoveAt(listaTokens.Count - 1);
                             tokens("Mayor o I", lexema, i + 1, indice);
                             lexema = "";
                             estado = 0;
                         }
-                        else
-                        {
+                        else{
                             //tokens("Mayor que", lexema, i + 1, indice);
                             lexema = "";
                             estado = 0;
@@ -198,15 +175,13 @@ namespace Lilith
                         }
                         break;
                     case 8:
-                        if (c == '=')
-                        {
+                        if (c == '='){
                             lexema += c;
                             tokens("Menor o I", lexema, i + 1, indice);
                             lexema = "";
                             estado = 0;
                         }
-                        else
-                        {
+                        else{
                             tokens("Menor que", lexema, i + 1, indice);
                             lexema = "";
                             estado = 0;
@@ -214,15 +189,13 @@ namespace Lilith
                         }
                         break;
                     case 10:
-                        if (c != '=')
-                        {
+                        if (c != '='){
                             tokens("Asignacion", lexema, i + 1, indice);
                             lexema = "";
                             estado = 0;
                             i--;
                         }
-                        else
-                        {
+                        else{
                             lexema += c;
                             tokens("Igualdad", lexema, i + 1, indice);
                             lexema = "";
@@ -230,21 +203,18 @@ namespace Lilith
                         }
                         break;
                     case 20:
-                        if (Char.IsLetterOrDigit(c))
-                        {
+                        if (Char.IsLetterOrDigit(c)){
+                            tokens("IN_NUM", lexema, i + 1, indice);
                             lexema += c;
                             estado = 20;
                         }
-                        else
-                        {
+                        else{
                             Boolean rese = false;
                             rese = Reservadas(lexema);
-                            if (rese)
-                            {
+                            if (rese){
                                 tokens("Palabra Reservada", lexema, i + 1, indice);
                             }
-                            else
-                            {
+                            else{
                                 tokens("Identificador", lexema, i + 1, indice);
                             }
                             lexema = "";
@@ -253,18 +223,15 @@ namespace Lilith
                         }
                         break;
                     case 22:
-                        if (Char.IsDigit(c))
-                        {
+                        if (Char.IsDigit(c)){
                             lexema += c;
                             estado = 22;
                         }
-                        else if (c == '.')
-                        {
+                        else if (c == '.'){
                             lexema += c;
                             estado = 23;
                         }
-                        else
-                        {
+                        else{
                             tokens("Digito Entero", lexema.ToString(), i + 1, indice);
                             lexema = "";
                             i--;
@@ -272,13 +239,11 @@ namespace Lilith
                         }
                         break;
                     case 23:
-                        if (Char.IsDigit(c))
-                        {
+                        if (Char.IsDigit(c)){
                             lexema += c;
                             estado = 24;
                         }
-                        else
-                        {
+                        else{
                             lexema += c;
                             tokens("ERROR", lexema, i + 1, indice);
                             lexema = "";
@@ -286,13 +251,11 @@ namespace Lilith
                         }
                         break;
                     case 24:
-                        if (Char.IsDigit(c))
-                        {
+                        if (Char.IsDigit(c)){
                             lexema += c;
                             estado = 24;
                         }
-                        else
-                        {
+                        else{
                             tokens("Digito Real", lexema, i + 1, indice);
                             lexema = "";
                             estado = 0;
@@ -300,34 +263,29 @@ namespace Lilith
                         }
                         break;
                     case 25:
-                        if (bandera == true)
-                        {
+                        if (bandera == true){
                             lexema += c;
                             auxiliar = lexema;
-                            if (c == '*')
-                            {
+                            if (c == '*'){
                                 estado = 26;
                             }
                         }
                         break;
                     case 26:
-                        if (c == '/')
-                        {
+                        if (c == '/'){
                             lexema += c;
                             tokens("Comentario /**/", lexema, i + 1, indice);
                             lexema = "";
                             bandera = false;
                             estado = 0;
                         }
-                        else
-                        {
+                        else{
                             lexema += c;
                             estado = 25;
                         }
                         break;
                     case 28:
-                        if (c != '/')
-                        {
+                        if (c != '/'){
 
                             lexema += c;
                             listaTokens.RemoveAt(listaTokens.Count - 1);
