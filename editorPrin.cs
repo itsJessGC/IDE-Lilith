@@ -14,6 +14,8 @@ namespace Lilith
 {
     public partial class editorPrin : Form
     {
+        public override System.Drawing.Color ForeColor { get; set; }
+
         public editorPrin()
         {
             InitializeComponent();
@@ -109,13 +111,6 @@ namespace Lilith
         {
 
         }
-
-        /*private void rtb_TextChanged(object sender, EventArgs e)
-        {
-            this.CambiaColores("while", Color.Purple, 0);
-            this.CambiaColores("if", Color.Green, 0);
-        }*/
-
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
@@ -246,12 +241,64 @@ namespace Lilith
             tokenText.Text = analizador.tokensResultados();
         }
 
+        public Regex keyWordsBlue = new Regex("if|then |else |fi |true |while |do |done |set |export |bool |break |case |class |const |for |foreach |goto |in |void ");
+        public Regex keyWordsGreenComment = new Regex(@"\#.*?\n");
+        //millz12.wordpress.com/2009/11/26/c-richtextbox-syntax-highlighting/
+        ///www.codeproject.com/Questions/643494/Syntax-highlighting-a-RichTextBox-in-Csharp
+        //www.c-sharpcorner.com/uploadfile/kirtan007/syntax-highlighting-in-richtextbox-using-C-Sharp/
+        //www.c-sharpcorner.com/article/syntax-highlighting-in-richtextbox-control-part-2/
         private void codigoTexto_TextChanged(object sender, EventArgs e)
         {
-            this.CheckKeyword("while", Color.Purple, 0);
-            this.CheckKeyword("if", Color.Green, 0);
-        }
+            // Select all and set to black so that it's 'clean'
+            codigoTexto.SelectAll();
+            codigoTexto.SelectionColor = Color.Black;
+            codigoTexto.Select(codigoTexto.Text.Length, 1);
 
+
+            this.CheckKeyword("#include", Color.Green, 0);
+
+
+            this.CheckKeyword("class", Color.Blue, 0);
+            this.CheckKeyword("const", Color.Blue, 0);
+            this.CheckKeyword("enum", Color.Blue, 0);
+            this.CheckKeyword("implements", Color.Blue, 0);
+            this.CheckKeyword("new", Color.Blue, 0);
+            this.CheckKeyword("package", Color.Blue, 0);
+            this.CheckKeyword("private", Color.Blue, 0);
+            this.CheckKeyword("protected", Color.Blue, 0);
+            this.CheckKeyword("public", Color.Blue, 0);
+            this.CheckKeyword("return", Color.Blue, 0);
+            this.CheckKeyword("void", Color.Blue, 0);
+
+
+            this.CheckKeyword("abstract", Color.Blue, 0);
+            this.CheckKeyword("assert", Color.Blue, 0);
+            this.CheckKeyword("break", Color.Blue, 0);
+            this.CheckKeyword("case", Color.Blue, 0);
+            this.CheckKeyword("catch", Color.Blue, 0);
+            this.CheckKeyword("continue", Color.Blue, 0);
+            this.CheckKeyword("default", Color.Blue, 0);
+            this.CheckKeyword("do", Color.Blue, 0);
+            this.CheckKeyword("else", Color.Blue, 0);
+            this.CheckKeyword("extendes", Color.Blue, 0);
+            this.CheckKeyword("final", Color.Blue, 0);
+            this.CheckKeyword("finaly", Color.Blue, 0);
+            this.CheckKeyword("for", Color.Blue, 0);
+            this.CheckKeyword("go to", Color.Blue, 0);
+            this.CheckKeyword("if", Color.Blue, 0);
+            this.CheckKeyword("switch", Color.Blue, 0);
+            this.CheckKeyword("while", Color.Blue, 0);
+
+
+            this.CheckKeyword("boolean", Color.Red, 0);
+            this.CheckKeyword("byte", Color.Red, 0);
+            this.CheckKeyword("char", Color.Red, 0);
+            this.CheckKeyword("double", Color.Red, 0);
+            this.CheckKeyword("float", Color.Red, 0);
+            this.CheckKeyword("int", Color.Red, 0);
+            this.CheckKeyword("long", Color.Red, 0);
+        }
+        
         private void CheckKeyword(string word, Color color, int startIndex)
         {
             if (this.codigoTexto.Text.Contains(word))

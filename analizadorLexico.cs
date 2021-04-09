@@ -300,10 +300,10 @@ namespace Lilith
         public Boolean Reservadas(String palabra)
         {
             Boolean bandera = false;
-            var PReservadas = new List<string> { "program", "if", "else", "fi", "do", "until", "while", "read", "write", "float", "int", "bool", "and", "or", "not" };
-            for (int i = 0; i < PReservadas.Count; ++i)
+            var palReservadas = new List<string> { "program", "if", "else", "fi", "do", "until", "while", "read", "write", "float", "int", "bool", "and", "or", "not" };
+            for (int i = 0; i < palReservadas.Count; ++i)
             {
-                if (palabra.ToString() == PReservadas[i].ToString())
+                if (palabra.ToString() == palReservadas[i].ToString())
                 {
                     return true;
                 }

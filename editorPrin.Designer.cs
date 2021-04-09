@@ -326,6 +326,7 @@ namespace Lilith
             // 
             // codigoTexto
             // 
+            this.codigoTexto.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.codigoTexto.Location = new System.Drawing.Point(0, 1);
             this.codigoTexto.Name = "codigoTexto";
             this.codigoTexto.Size = new System.Drawing.Size(543, 371);
