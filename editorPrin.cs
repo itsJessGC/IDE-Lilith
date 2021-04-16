@@ -21,6 +21,8 @@ namespace Lilith
             InitializeComponent();
         }
 
+        int tokenllevado = 0;
+
         private RichTextBox GetRichTextBox()
         {
             RichTextBox rtb = null;
@@ -239,6 +241,14 @@ namespace Lilith
             }
             analizador.obtenerTokens2();
             tokenText.Text = analizador.tokensResultados();
+            analizador.obtenerTokens2E();
+            textoTerminal.Text = "Tokens \t Tipo \t Linea" + Environment.NewLine + analizador.tokensResultadosE();
+            //tokenllevado = tablaTokens.Rows.Add();
+
+
+            /*tablaTokens.Rows[tokenllevado].Cells["campoToken"].Value = analizador.simboloResultados();
+            tablaTokens.Rows[tokenllevado].Cells["campoTipo"].Value = analizador.tokensResultados();
+            tablaTokens.Rows[tokenllevado].Cells["campoLinea"].Value = analizador.lineaResultados();*/
         }
 
         public Regex keyWordsBlue = new Regex("if|then |else |fi |true |while |do |done |set |export |bool |break |case |class |const |for |foreach |goto |in |void ");
@@ -314,6 +324,18 @@ namespace Lilith
                     this.codigoTexto.SelectionColor = Color.Black;
                 }
             }
+        }
+
+        
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void terminal_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

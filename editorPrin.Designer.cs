@@ -62,11 +62,17 @@ namespace Lilith
             this.editorCodigo = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.codigoTexto = new System.Windows.Forms.RichTextBox();
-            this.terminal = new System.Windows.Forms.TextBox();
+            this.textoTerminal = new System.Windows.Forms.TextBox();
             this.tabLexico = new System.Windows.Forms.TabControl();
             this.Tokens = new System.Windows.Forms.TabPage();
+            this.tablaTokens = new System.Windows.Forms.DataGridView();
+            this.campoToken = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.campoTipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.campoLinea = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tokenText = new System.Windows.Forms.RichTextBox();
             this.arbolLex = new System.Windows.Forms.TabPage();
+            this.tabsTerminal = new System.Windows.Forms.TabControl();
+            this.Terminal = new System.Windows.Forms.TabPage();
             this.tabControl2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.menuPrincipal.SuspendLayout();
@@ -74,6 +80,9 @@ namespace Lilith
             this.tabPage1.SuspendLayout();
             this.tabLexico.SuspendLayout();
             this.Tokens.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaTokens)).BeginInit();
+            this.tabsTerminal.SuspendLayout();
+            this.Terminal.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl2
@@ -126,7 +135,7 @@ namespace Lilith
             this.helpToolStripMenuItem});
             this.menuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.menuPrincipal.Name = "menuPrincipal";
-            this.menuPrincipal.Size = new System.Drawing.Size(927, 24);
+            this.menuPrincipal.Size = new System.Drawing.Size(986, 24);
             this.menuPrincipal.TabIndex = 2;
             this.menuPrincipal.Text = "menuStrip1";
             this.menuPrincipal.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuPrincipal_ItemClicked);
@@ -306,6 +315,7 @@ namespace Lilith
             // editorCodigo
             // 
             this.editorCodigo.Controls.Add(this.tabPage1);
+            this.editorCodigo.Cursor = System.Windows.Forms.Cursors.Default;
             this.editorCodigo.Location = new System.Drawing.Point(176, 30);
             this.editorCodigo.Name = "editorCodigo";
             this.editorCodigo.SelectedIndex = 0;
@@ -326,22 +336,25 @@ namespace Lilith
             // 
             // codigoTexto
             // 
+            this.codigoTexto.BackColor = System.Drawing.Color.White;
             this.codigoTexto.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.codigoTexto.Location = new System.Drawing.Point(0, 1);
             this.codigoTexto.Name = "codigoTexto";
+            this.codigoTexto.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
             this.codigoTexto.Size = new System.Drawing.Size(543, 371);
-            this.codigoTexto.TabIndex = 0;
+            this.codigoTexto.TabIndex = 3;
             this.codigoTexto.Text = "";
             this.codigoTexto.TextChanged += new System.EventHandler(this.codigoTexto_TextChanged);
             // 
-            // terminal
+            // textoTerminal
             // 
-            this.terminal.Location = new System.Drawing.Point(17, 435);
-            this.terminal.Multiline = true;
-            this.terminal.Name = "terminal";
-            this.terminal.Size = new System.Drawing.Size(898, 55);
-            this.terminal.TabIndex = 3;
-            this.terminal.Text = "Terminal";
+            this.textoTerminal.Location = new System.Drawing.Point(0, 0);
+            this.textoTerminal.Multiline = true;
+            this.textoTerminal.Name = "textoTerminal";
+            this.textoTerminal.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textoTerminal.Size = new System.Drawing.Size(958, 94);
+            this.textoTerminal.TabIndex = 3;
+            this.textoTerminal.TextChanged += new System.EventHandler(this.terminal_TextChanged);
             // 
             // tabLexico
             // 
@@ -351,26 +364,63 @@ namespace Lilith
             this.tabLexico.Location = new System.Drawing.Point(735, 30);
             this.tabLexico.Name = "tabLexico";
             this.tabLexico.SelectedIndex = 0;
-            this.tabLexico.Size = new System.Drawing.Size(180, 395);
+            this.tabLexico.Size = new System.Drawing.Size(243, 395);
             this.tabLexico.TabIndex = 4;
             // 
             // Tokens
             // 
+            this.Tokens.Controls.Add(this.tablaTokens);
             this.Tokens.Controls.Add(this.tokenText);
             this.Tokens.Location = new System.Drawing.Point(4, 22);
             this.Tokens.Name = "Tokens";
             this.Tokens.Padding = new System.Windows.Forms.Padding(3);
-            this.Tokens.Size = new System.Drawing.Size(172, 369);
+            this.Tokens.Size = new System.Drawing.Size(235, 369);
             this.Tokens.TabIndex = 0;
             this.Tokens.Text = "Tokens";
             this.Tokens.UseVisualStyleBackColor = true;
             this.Tokens.Click += new System.EventHandler(this.tabPage1_Click_2);
             // 
+            // tablaTokens
+            // 
+            this.tablaTokens.AllowUserToAddRows = false;
+            this.tablaTokens.AllowUserToDeleteRows = false;
+            this.tablaTokens.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.tablaTokens.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaTokens.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.campoToken,
+            this.campoTipo,
+            this.campoLinea});
+            this.tablaTokens.Location = new System.Drawing.Point(0, 0);
+            this.tablaTokens.Name = "tablaTokens";
+            this.tablaTokens.RowHeadersVisible = false;
+            this.tablaTokens.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.tablaTokens.Size = new System.Drawing.Size(235, 257);
+            this.tablaTokens.TabIndex = 2;
+            this.tablaTokens.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // campoToken
+            // 
+            this.campoToken.HeaderText = "Token";
+            this.campoToken.Name = "campoToken";
+            this.campoToken.Width = 70;
+            // 
+            // campoTipo
+            // 
+            this.campoTipo.HeaderText = "Tipo de Token";
+            this.campoTipo.Name = "campoTipo";
+            this.campoTipo.Width = 110;
+            // 
+            // campoLinea
+            // 
+            this.campoLinea.HeaderText = "Línea";
+            this.campoLinea.Name = "campoLinea";
+            this.campoLinea.Width = 50;
+            // 
             // tokenText
             // 
-            this.tokenText.Location = new System.Drawing.Point(1, 2);
+            this.tokenText.Location = new System.Drawing.Point(3, 263);
             this.tokenText.Name = "tokenText";
-            this.tokenText.Size = new System.Drawing.Size(170, 366);
+            this.tokenText.Size = new System.Drawing.Size(227, 105);
             this.tokenText.TabIndex = 0;
             this.tokenText.Text = "";
             // 
@@ -379,26 +429,46 @@ namespace Lilith
             this.arbolLex.Location = new System.Drawing.Point(4, 22);
             this.arbolLex.Name = "arbolLex";
             this.arbolLex.Padding = new System.Windows.Forms.Padding(3);
-            this.arbolLex.Size = new System.Drawing.Size(172, 369);
+            this.arbolLex.Size = new System.Drawing.Size(235, 369);
             this.arbolLex.TabIndex = 1;
             this.arbolLex.Text = "Árbol";
             this.arbolLex.UseVisualStyleBackColor = true;
             // 
+            // tabsTerminal
+            // 
+            this.tabsTerminal.Controls.Add(this.Terminal);
+            this.tabsTerminal.Location = new System.Drawing.Point(12, 435);
+            this.tabsTerminal.Name = "tabsTerminal";
+            this.tabsTerminal.SelectedIndex = 0;
+            this.tabsTerminal.Size = new System.Drawing.Size(966, 120);
+            this.tabsTerminal.TabIndex = 5;
+            // 
+            // Terminal
+            // 
+            this.Terminal.Controls.Add(this.textoTerminal);
+            this.Terminal.Location = new System.Drawing.Point(4, 22);
+            this.Terminal.Name = "Terminal";
+            this.Terminal.Padding = new System.Windows.Forms.Padding(3);
+            this.Terminal.Size = new System.Drawing.Size(958, 94);
+            this.Terminal.TabIndex = 0;
+            this.Terminal.Text = "Terminal";
+            this.Terminal.UseVisualStyleBackColor = true;
+            // 
             // editorPrin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(927, 502);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoSize = true;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(986, 567);
+            this.Controls.Add(this.tabsTerminal);
             this.Controls.Add(this.tabLexico);
-            this.Controls.Add(this.terminal);
             this.Controls.Add(this.menuPrincipal);
             this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.editorCodigo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuPrincipal;
             this.Name = "editorPrin";
-            this.Text = "Form1";
+            this.Text = "Lilith";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
@@ -408,6 +478,10 @@ namespace Lilith
             this.tabPage1.ResumeLayout(false);
             this.tabLexico.ResumeLayout(false);
             this.Tokens.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tablaTokens)).EndInit();
+            this.tabsTerminal.ResumeLayout(false);
+            this.Terminal.ResumeLayout(false);
+            this.Terminal.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -440,7 +514,7 @@ namespace Lilith
         private System.Windows.Forms.ToolStripMenuItem findInFilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nToolStripMenuItem;
         private System.Windows.Forms.TabControl editorCodigo;
-        private System.Windows.Forms.TextBox terminal;
+        private System.Windows.Forms.TextBox textoTerminal;
         private System.Windows.Forms.ToolStripMenuItem closeFileToolStripMenuItem;
         private System.Windows.Forms.TreeView arbolProyecto;
         private System.Windows.Forms.TabControl tabLexico;
@@ -451,6 +525,12 @@ namespace Lilith
         private System.Windows.Forms.RichTextBox tokenText;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.RichTextBox codigoTexto;
+        private System.Windows.Forms.DataGridView tablaTokens;
+        private System.Windows.Forms.DataGridViewTextBoxColumn campoToken;
+        private System.Windows.Forms.DataGridViewTextBoxColumn campoTipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn campoLinea;
+        private System.Windows.Forms.TabControl tabsTerminal;
+        private System.Windows.Forms.TabPage Terminal;
     }
 }
 
