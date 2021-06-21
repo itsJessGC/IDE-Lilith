@@ -12,7 +12,7 @@ namespace Lilith
         static private List<token> listaTokens;
         static private List<token> listaTokensErrores;
         private String tokenResultado;
-        private String tokenResultadoE;
+        private String tokenResultadoError;
         private Boolean bandera;
         private String auxiliar;
         public analizadorLexico()
@@ -27,7 +27,7 @@ namespace Lilith
             token nuevoToken = new token(idToken, lexema, indice, linea);
             listaTokens.Add(nuevoToken);
         }
-        public void tokensE(String idToken, String lexema, int linea, int indice)
+        public void tokensError(String idToken, String lexema, int linea, int indice)
         {
             token nuevoToken = new token(idToken, lexema, indice, linea);
             listaTokensErrores.Add(nuevoToken);
@@ -45,10 +45,12 @@ namespace Lilith
         {
             return tokenResultado;
         }
-        public String tokensResultadosE()
+
+        public String tokensResultadosError()
         {
-            return tokenResultadoE;
+            return tokenResultadoError;
         }
+
         public void obtenerTokens2()
         {
             for (int i = 0; i < listaTokens.Count; i++)
@@ -57,14 +59,16 @@ namespace Lilith
                 tokenResultado += "\t" + actual.getLexema() + "\t" + actual.getIdToken() + "\t" + actual.getLinea() + Environment.NewLine;
             }
         }
-        public void obtenerTokens2E()
+
+        public void obtenerTokensError()
         {
             for (int i = 0; i < listaTokensErrores.Count; i++)
             {
                 token actual = listaTokensErrores.ElementAt(i);
-                tokenResultadoE += actual.getLexema() + "\t" + actual.getIdToken() + "\t" + actual.getLinea() + Environment.NewLine;
+                tokenResultadoError += actual.getLexema() + "\t" + actual.getIdToken() + "\t" + actual.getLinea() + Environment.NewLine;
             }
         }
+
         public void Analizado_Lexico(String Cadena, int linea)
         {
             int estado = 0;
@@ -77,7 +81,6 @@ namespace Lilith
 
             Char c;
             int indice = linea;
-            //Boolean bandera = false;
             for (int i = 0; i < Cadena.Length; ++i)
             {
                 c = Cadena[i];
@@ -192,7 +195,7 @@ namespace Lilith
                         else
                         {
                             lexema += c;
-                            tokensE("Error", lexema, i + 1, indice);
+                            tokensError("Error", lexema, i + 1, indice);
                             lexema = "";
                         }
 
@@ -201,6 +204,7 @@ namespace Lilith
                         if (c == '/')
                         {
                             lexema += c;
+                            tokens("Comentario", lexema, i + 1, indice);
                             estado = 28;
                         }
                         else if (c == '*')
@@ -281,7 +285,7 @@ namespace Lilith
                             }
                             else
                             {
-                                tokens("Identificador", lexema, i + 1, indice);
+                                tokens("ID", lexema, i + 1, indice);
                             }
                             lexema = "";
                             estado = 0;
@@ -301,7 +305,7 @@ namespace Lilith
                         }
                         else
                         {
-                            tokens("Digito Entero", lexema.ToString(), i + 1, indice);
+                            tokens("NUM", lexema.ToString(), i + 1, indice);
                             lexema = "";
                             i--;
                             estado = 0;
@@ -316,7 +320,7 @@ namespace Lilith
                         else
                         {
                             lexema += c;
-                            tokensE("Error", lexema, i + 1, indice);
+                            tokensError("Error", lexema, i + 1, indice);
                             lexema = "";
                             estado = 0;
                         }
@@ -329,7 +333,7 @@ namespace Lilith
                         }
                         else
                         {
-                            tokens("Digito Real", lexema, i + 1, indice);
+                            tokens("NUM", lexema, i + 1, indice);
                             lexema = "";
                             estado = 0;
                             i--;
@@ -379,7 +383,7 @@ namespace Lilith
                         }
                         else
                         {
-                            tokensE("Error", lexema, i + 1, indice);
+                            tokensError("Error", lexema, i + 1, indice);
                             lexema = "";
                             i--;
                             estado = 0;

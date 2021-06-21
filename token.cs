@@ -13,7 +13,6 @@ namespace Lilith
         private int indice;
         private int linea;
 
-
         public token(String idToken, String lexema, int linea, int indice)
         {
             this.idToken = idToken;

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace Lilith
 {
@@ -241,14 +242,31 @@ namespace Lilith
             }
             analizador.obtenerTokens2();
             tokenText.Text = analizador.tokensResultados();
-            analizador.obtenerTokens2E();
-            textoTerminal.Text = "Tokens \t Tipo \t Linea" + Environment.NewLine + analizador.tokensResultadosE();
+            analizador.obtenerTokensError();
+            textoTerminal.Text = "Tokens \t Tipo \t Linea" + Environment.NewLine + analizador.tokensResultadosError();
             //tokenllevado = tablaTokens.Rows.Add();
 
 
             /*tablaTokens.Rows[tokenllevado].Cells["campoToken"].Value = analizador.simboloResultados();
             tablaTokens.Rows[tokenllevado].Cells["campoTipo"].Value = analizador.tokensResultados();
             tablaTokens.Rows[tokenllevado].Cells["campoLinea"].Value = analizador.lineaResultados();*/
+            if (analizador.tokensResultadosError() == null)
+            {
+                Sintactico analizadorSintactico = new Sintactico(analizador.obtenerTokens());
+                Nodo arbol = new Nodo();
+                arbol = analizadorSintactico.arbolSintactico();
+
+                //Arbol es el que utilizamos para enviarlo al TreeView
+                treeView1.Nodes.Clear();
+                TreeNode aux = treeView1.Nodes.Add(arbol.valor);
+                arbolSint(null, aux, arbol);
+                textoTerminal.Text = analizadorSintactico.erroresSintacticos();
+            }
+        }
+
+        private void arbolSint(object p, TreeNode aux, Nodo arbol)
+        {
+            throw new NotImplementedException();
         }
 
         public Regex keyWordsBlue = new Regex("if|then |else |fi |true |while |do |done |set |export |bool |break |case |class |const |for |foreach |goto |in |void ");
@@ -336,6 +354,26 @@ namespace Lilith
         private void terminal_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        void arbolSint(TreeNode padre, TreeNode treeNode, Nodo nodo)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                if (nodo.hijos[i] != null)
+                {
+                    TreeNode aux = treeNode.Nodes.Add(nodo.hijos[i].valor);
+                    arbolSint(treeNode, aux, nodo.hijos[i]);
+                }
+                else
+                    break;
+            }
+
+            if (nodo.hermano != null)
+            {
+                TreeNode aux = padre.Nodes.Add(nodo.hermano.valor);
+                arbolSint(padre, aux, nodo.hermano);
+            }
         }
     }
 }

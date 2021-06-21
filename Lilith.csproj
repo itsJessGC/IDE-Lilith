@@ -53,8 +53,10 @@
     <Compile Include="editorPrin.Designer.cs">
       <DependentUpon>editorPrin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Nodo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sintactico.cs" />
     <Compile Include="token.cs" />
     <EmbeddedResource Include="editorPrin.resx">
       <DependentUpon>editorPrin.cs</DependentUpon>

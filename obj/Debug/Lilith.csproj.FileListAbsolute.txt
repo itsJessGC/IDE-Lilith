@@ -18,3 +18,13 @@ C:\Users\Jessie Guerrero\Desktop\IDE-Lilith\Lilith\bin\Debug\Lilith.exe.config
 C:\Users\Jessie Guerrero\Desktop\IDE-Lilith\Lilith\bin\Debug\Lilith.exe
 C:\Users\Jessie Guerrero\Desktop\IDE-Lilith\Lilith\bin\Debug\Lilith.pdb
 C:\Users\Jessie Guerrero\Desktop\IDE-Lilith\Lilith\obj\Debug\Lilith.editorPrin.resources
+C:\Users\jessi\Desktop\IDE-Lilith\Lilith\obj\Debug\Lilith.csprojAssemblyReference.cache
+C:\Users\jessi\Desktop\IDE-Lilith\Lilith\obj\Debug\Lilith.editorPrin.resources
+C:\Users\jessi\Desktop\IDE-Lilith\Lilith\obj\Debug\Lilith.Properties.Resources.resources
+C:\Users\jessi\Desktop\IDE-Lilith\Lilith\obj\Debug\Lilith.csproj.GenerateResource.cache
+C:\Users\jessi\Desktop\IDE-Lilith\Lilith\obj\Debug\Lilith.csproj.CoreCompileInputs.cache
+C:\Users\jessi\Desktop\IDE-Lilith\Lilith\obj\Debug\Lilith.exe
+C:\Users\jessi\Desktop\IDE-Lilith\Lilith\obj\Debug\Lilith.pdb
+C:\Users\jessi\Desktop\IDE-Lilith\Lilith\bin\Debug\Lilith.exe.config
+C:\Users\jessi\Desktop\IDE-Lilith\Lilith\bin\Debug\Lilith.exe
+C:\Users\jessi\Desktop\IDE-Lilith\Lilith\bin\Debug\Lilith.pdb
