@@ -1,0 +1,52 @@
+C:\Users\Jessie Guerrero\Desktop\Lilith\obj\Debug\Lilith.csprojAssemblyReference.cache
+C:\Users\Jessie Guerrero\Desktop\Lilith\obj\Debug\Lilith.Form1.resources
+C:\Users\Jessie Guerrero\Desktop\Lilith\obj\Debug\Lilith.Properties.Resources.resources
+C:\Users\Jessie Guerrero\Desktop\Lilith\obj\Debug\Lilith.csproj.GenerateResource.cache
+C:\Users\Jessie Guerrero\Desktop\Lilith\obj\Debug\Lilith.csproj.CoreCompileInputs.cache
+C:\Users\Jessie Guerrero\Desktop\Lilith\bin\Debug\Lilith.exe.config
+C:\Users\Jessie Guerrero\Desktop\Lilith\bin\Debug\Lilith.exe
+C:\Users\Jessie Guerrero\Desktop\Lilith\bin\Debug\Lilith.pdb
+C:\Users\Jessie Guerrero\Desktop\Lilith\obj\Debug\Lilith.exe
+C:\Users\Jessie Guerrero\Desktop\Lilith\obj\Debug\Lilith.pdb
+C:\Users\Jessie Guerrero\Desktop\IDE-Lilith\Lilith\obj\Debug\Lilith.csprojAssemblyReference.cache
+C:\Users\Jessie Guerrero\Desktop\IDE-Lilith\Lilith\obj\Debug\Lilith.Properties.Resources.resources
+C:\Users\Jessie Guerrero\Desktop\IDE-Lilith\Lilith\obj\Debug\Lilith.csproj.GenerateResource.cache
+C:\Users\Jessie Guerrero\Desktop\IDE-Lilith\Lilith\obj\Debug\Lilith.csproj.CoreCompileInputs.cache
+C:\Users\Jessie Guerrero\Desktop\IDE-Lilith\Lilith\obj\Debug\Lilith.exe
+C:\Users\Jessie Guerrero\Desktop\IDE-Lilith\Lilith\obj\Debug\Lilith.pdb
+C:\Users\Jessie Guerrero\Desktop\IDE-Lilith\Lilith\bin\Debug\Lilith.exe.config
+C:\Users\Jessie Guerrero\Desktop\IDE-Lilith\Lilith\bin\Debug\Lilith.exe
+C:\Users\Jessie Guerrero\Desktop\IDE-Lilith\Lilith\bin\Debug\Lilith.pdb
+C:\Users\Jessie Guerrero\Desktop\IDE-Lilith\Lilith\obj\Debug\Lilith.editorPrin.resources
+C:\Users\jessi\Desktop\IDE-Lilith\Lilith\obj\Debug\Lilith.csprojAssemblyReference.cache
+C:\Users\jessi\Desktop\IDE-Lilith\Lilith\obj\Debug\Lilith.editorPrin.resources
+C:\Users\jessi\Desktop\IDE-Lilith\Lilith\obj\Debug\Lilith.Properties.Resources.resources
+C:\Users\jessi\Desktop\IDE-Lilith\Lilith\obj\Debug\Lilith.csproj.GenerateResource.cache
+C:\Users\jessi\Desktop\IDE-Lilith\Lilith\obj\Debug\Lilith.csproj.CoreCompileInputs.cache
+C:\Users\jessi\Desktop\IDE-Lilith\Lilith\obj\Debug\Lilith.exe
+C:\Users\jessi\Desktop\IDE-Lilith\Lilith\obj\Debug\Lilith.pdb
+C:\Users\jessi\Desktop\IDE-Lilith\Lilith\bin\Debug\Lilith.exe.config
+C:\Users\jessi\Desktop\IDE-Lilith\Lilith\bin\Debug\Lilith.exe
+C:\Users\jessi\Desktop\IDE-Lilith\Lilith\bin\Debug\Lilith.pdb
+C:\Users\jessi\Desktop\IDE-Lilith\bin\Debug\Lilith.exe.config
+C:\Users\jessi\Desktop\IDE-Lilith\bin\Debug\Lilith.exe
+C:\Users\jessi\Desktop\IDE-Lilith\bin\Debug\Lilith.pdb
+C:\Users\jessi\Desktop\IDE-Lilith\obj\Debug\Lilith.csproj.AssemblyReference.cache
+C:\Users\jessi\Desktop\IDE-Lilith\obj\Debug\Lilith.editorPrin.resources
+C:\Users\jessi\Desktop\IDE-Lilith\obj\Debug\Lilith.Properties.Resources.resources
+C:\Users\jessi\Desktop\IDE-Lilith\obj\Debug\Lilith.csproj.GenerateResource.cache
+C:\Users\jessi\Desktop\IDE-Lilith\obj\Debug\Lilith.csproj.CoreCompileInputs.cache
+C:\Users\jessi\Desktop\IDE-Lilith\obj\Debug\Lilith.exe
+C:\Users\jessi\Desktop\IDE-Lilith\obj\Debug\Lilith.pdb
+C:\Users\jessi\Desktop\BU\IDE-Lilith\bin\Debug\Lilith.exe.config
+C:\Users\jessi\Desktop\BU\IDE-Lilith\bin\Debug\Lilith.exe
+C:\Users\jessi\Desktop\BU\IDE-Lilith\bin\Debug\Lilith.pdb
+C:\Users\jessi\Desktop\BU\IDE-Lilith\obj\Debug\Lilith.csproj.AssemblyReference.cache
+C:\Users\jessi\Desktop\BU\IDE-Lilith\obj\Debug\Lilith.csproj.SuggestedBindingRedirects.cache
+C:\Users\jessi\Desktop\BU\IDE-Lilith\obj\Debug\Lilith.Properties.Resources.resources
+C:\Users\jessi\Desktop\BU\IDE-Lilith\obj\Debug\Lilith.csproj.GenerateResource.cache
+C:\Users\jessi\Desktop\BU\IDE-Lilith\obj\Debug\Lilith.csproj.CoreCompileInputs.cache
+C:\Users\jessi\Desktop\BU\IDE-Lilith\obj\Debug\Lilith.exe
+C:\Users\jessi\Desktop\BU\IDE-Lilith\obj\Debug\Lilith.pdb
+C:\Users\jessi\Desktop\BU\IDE-Lilith\obj\Debug\Lilith.editorPrin.resources
+C:\Users\jessi\Desktop\IDE-Lilith\obj\Debug\Lilith.csproj.SuggestedBindingRedirects.cache
